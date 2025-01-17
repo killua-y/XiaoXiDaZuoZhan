@@ -71,4 +71,8 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+<<<<<<< HEAD
+=======
+
+# large text file
 Assets/ThirdParty/text.ttf/VonwaonBitmap-16px SDF.asset
