@@ -6,7 +6,7 @@ public class FlappyBirdGameManager : MonoBehaviour
 {
     public static FlappyBirdGameManager Instance { get; private set; }
 
-    [SerializeField] private Player player;
+    [SerializeField] private Bird player;
     [SerializeField] private Spawner spawner;
     [SerializeField] private Text scoreText;
     [SerializeField] private GameObject playButton;
