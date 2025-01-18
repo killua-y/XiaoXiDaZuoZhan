@@ -24,7 +24,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686349597252319005}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -559,7 +559,7 @@ MonoBehaviour:
   m_text: "\u4E0A\u6B21\u7684\u9700\u6C42\u8FD8\u662F\u7B2C\u4E00\u7248\u597D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e44680431efce46238ac746d442b7fba, type: 2}
-  m_sharedMaterial: {fileID: -4676841511426913254, guid: e44680431efce46238ac746d442b7fba, type: 2}
+  m_sharedMaterial: {fileID: 2286888003379079739, guid: e44680431efce46238ac746d442b7fba, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -768,7 +768,7 @@ MonoBehaviour:
   m_text: "\u4E25\u603B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e44680431efce46238ac746d442b7fba, type: 2}
-  m_sharedMaterial: {fileID: -4676841511426913254, guid: e44680431efce46238ac746d442b7fba, type: 2}
+  m_sharedMaterial: {fileID: 2286888003379079739, guid: e44680431efce46238ac746d442b7fba, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
