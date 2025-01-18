@@ -17,16 +17,38 @@ public class ChatManager : MonoBehaviour
     {
         foreach (var Chat in ChatMessageList)
         {
-
+            GameObject newChat = null;
             if (Chat.isMyOwnChat)
             {
-                GameObject newChat = Instantiate(ownChatObject, chatParent);
+                newChat = Instantiate(ownChatObject, chatParent);
             }
             else
             {
-                GameObject newChat = Instantiate(chatObject, chatParent);
+                newChat = Instantiate(chatObject, chatParent);
             }
+            if (newChat == null)
+            {
+                Debug.Log("error, chat is null");
+            }
+            ChatBehavior newChatBehavior = newChat.GetComponent<ChatBehavior>();
+
+            if (newChatBehavior == null)
+            {
+                Debug.Log("error, chat behavior is null");
+            }
+
+            newChatBehavior.SetupText(Chat.imageLocation, Chat.chatMessage);
         }
+
+        contactPersonNameText.text = person.name;
+
+        GenerateReplyPanel(person);
+
+    }
+
+    private void GenerateReplyPanel(Person person)
+    {
+
     }
 }
 
