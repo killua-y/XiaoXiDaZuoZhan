@@ -9,12 +9,16 @@ public class ChatManager : MonoBehaviour
 
     public GameObject chatObject;
     public GameObject ownChatObject;
+    public Transform chatParent;
 
     public GameObject replyPanel;
 
     public void GenerateChat(List<Chat> ChatMessageList, ContactPersonBehavior contactPersonBehavior, Person person)
     {
-
+        foreach (var Chat in ChatMessageList)
+        {
+            GameObject newChat = Instantiate(ownChatObject, chatParent);
+        }
     }
 }
 

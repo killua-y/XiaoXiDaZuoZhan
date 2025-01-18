@@ -20,6 +20,13 @@ public class ContactPersonBehavior : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI messagePreviewText;
 
+    public ChatManager chatManager;
+
+    private void Awake()
+    {
+        chatManager = FindAnyObjectByType<ChatManager>();
+    }
+
     void Start()
     {
         // Ensure the parent has at least one child
@@ -57,6 +64,12 @@ public class ContactPersonBehavior : MonoBehaviour
 
         nameText.text = person.name;
         messagePreviewText.text = person.chatMessage;
+    }
+
+    public void GoToChatPanel()
+    {
+        PhoneBehavior.Instance.OpenChatBackground();
+        chatManager.GenerateChat(ChatList, this, person);
     }
 
 
