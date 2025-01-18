@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Person
 {
-
     public int index;
     public bool isBoss;
     public string name;

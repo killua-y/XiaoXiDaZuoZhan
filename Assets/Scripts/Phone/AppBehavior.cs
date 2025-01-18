@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PersonToGameObject : MonoBehaviour
+public class AppBehavior : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +15,5 @@ public class PersonToGameObject : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public static void GeneratePerson(Person person, Transform parent)
-    {
-
     }
 }
