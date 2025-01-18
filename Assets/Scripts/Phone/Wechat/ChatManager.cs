@@ -17,7 +17,15 @@ public class ChatManager : MonoBehaviour
     {
         foreach (var Chat in ChatMessageList)
         {
-            GameObject newChat = Instantiate(ownChatObject, chatParent);
+
+            if (Chat.isMyOwnChat)
+            {
+                GameObject newChat = Instantiate(ownChatObject, chatParent);
+            }
+            else
+            {
+                GameObject newChat = Instantiate(chatObject, chatParent);
+            }
         }
     }
 }
