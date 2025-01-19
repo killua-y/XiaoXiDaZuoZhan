@@ -22,6 +22,9 @@ public class PhoneBehavior : Singleton<PhoneBehavior>
 
     private RectTransform rectTransform; // RectTransform of the GameObject
 
+    // 玩家信息
+    public static string playerProfilePhoto = "123.jpg";
+
     void Start()
     {
         // Get the RectTransform component

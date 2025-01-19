@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class AppBehavior : MonoBehaviour
 {
-    
-    // Start is called before the first frame update
-    void Start()
+    public int index;
+    public BubbleBehavior bubble;
+
+    public bool isWechat;
+
+    public void getMessage()
     {
-        
+        if (isWechat)
+        {
+            bubble.gameObject.SetActive(true);
+        }
+        else
+        {
+            bubble.apear();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
