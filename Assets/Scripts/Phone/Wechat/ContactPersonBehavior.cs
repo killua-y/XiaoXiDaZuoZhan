@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class ContactPersonBehavior : MonoBehaviour
 {
+    public int index;
+
     public float moveSpeed = 2f; // Speed at which the child moves
     public float targetPosition = 0f; // Target X position in the middle
     public float disappearTarget = 1000f; // X position where the child will be destroyed
@@ -21,6 +23,11 @@ public class ContactPersonBehavior : MonoBehaviour
     public TextMeshProUGUI messagePreviewText;
 
     public ChatManager chatManager;
+
+    public BubbleBehavior Bubble;
+
+    // 针对当前对话是否已经收到了玩家回信
+    public bool hasReplayed;
 
     private void Awake()
     {
@@ -56,6 +63,21 @@ public class ContactPersonBehavior : MonoBehaviour
 
     public void SetupImageAndText(Person _person)
     {
+        // 如果用户不需要回复那就不会生成回复选项
+        if (_person.needReply)
+        {
+            hasReplayed = false;
+        }
+        else
+        {
+            hasReplayed = true;
+            Debug.Log("this person already repleyed");
+        }
+
+        Bubble.apear();
+
+        index = _person.index;
+
         person = _person;
         Chat newChat = new Chat(person.imageLocation, person.chatMessage, false);
         ChatList.Add(newChat);
@@ -72,6 +94,23 @@ public class ContactPersonBehavior : MonoBehaviour
         chatManager.GenerateChat(ChatList, this, person);
     }
 
+    public void SendFurtherReplayMessage()
+    {
+        // 设置为已回复
+        hasReplayed = true;
+        // 消除气泡，但不触发特效
+        Bubble.Disapear(false);
+
+        if (person.furtherReplyMessage == "null")
+        {
+            Debug.Log("this person contain no more furtherReplyMessage");
+        }
+
+        Chat newChat = new Chat(person.imageLocation, person.furtherReplyMessage, false);
+        ChatList.Add(newChat);
+        chatManager.sendText(newChat);
+        messagePreviewText.text = person.furtherReplyMessage;
+    }
 
     private IEnumerator MoveToPosition(RectTransform rectTransform, Vector2 destination)
     {
@@ -112,5 +151,11 @@ public class ContactPersonBehavior : MonoBehaviour
 
         // Destroy the child GameObject
         Destroy(rectTransform.gameObject);
+    }
+
+    private void OnDisable()
+    {
+        // Set the initial position of the child to the left of the screen, equal to its width
+        childRectTransform.anchoredPosition = new Vector2(targetPosition, childRectTransform.anchoredPosition.y);
     }
 }

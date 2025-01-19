@@ -17,8 +17,12 @@ public class Person
 
     public string furtherReplyMessage;
 
+    public bool needReply;
+    public bool goodReply;
+
     public Person(int _index, bool _isBoss, string _name, string _imageLocation,
-        string _chatMessage, string _replyMessage1, string _replyMessage2, string _furtherReplyMessage)
+        string _chatMessage, string _replyMessage1, string _replyMessage2, string _furtherReplyMessage,
+        bool _goodReply)
     {
         this.index = _index;
         this.isBoss = _isBoss;
@@ -28,6 +32,16 @@ public class Person
         this.replyMessage1 = _replyMessage1;
         this.replyMessage2 = _replyMessage2;
         this.furtherReplyMessage = _furtherReplyMessage;
+        if (replyMessage1 == "")
+        {
+            needReply = false;
+        }
+        else
+        {
+            needReply = true;
+        }
+        goodReply = _goodReply;
+
     }
 }
 

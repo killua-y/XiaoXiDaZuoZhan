@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,11 @@ public class BubbleBehavior : MonoBehaviour
     public float shakeDuration = 0.2f; // Duration of the shake effect
     public float shakeScaleFactor = 1.2f; // Factor by which the scale increases during the shake
     public float hoverScaleFactor = 1.1f; // Factor by which the scale increases on hover
+
+    public TextMeshProUGUI numberText;
+    private int bubbleNumber;
+
+    public bool isSmall;
 
     void Start()
     {
@@ -33,8 +39,78 @@ public class BubbleBehavior : MonoBehaviour
         // Check if the click count reaches 3
         if (clickCount >= 3)
         {
-            // Make the UI Image disappear
-            gameObject.SetActive(false);
+            Disapear();
+        }
+    }
+
+    public void apear()
+    {
+        // Make the UI Image disappear
+        gameObject.SetActive(true);
+        clickCount = 0;
+        bubbleNumber += 1;
+        numberText.text = bubbleNumber + "";
+        if (bubbleNumber >= 2)
+        {
+            numberText.gameObject.SetActive(true);
+        }
+        else
+        {
+            numberText.gameObject.SetActive(false);
+        }    
+    }
+
+    public void Disapear()
+    {
+        Disapear(true);
+    }
+
+    public void Disapear(bool effect)
+    {
+        // Make the UI Image disappear
+        if (this.gameObject.activeSelf)
+        {
+            clickCount = 0;
+            bubbleNumber -= 1;
+            numberText.text = bubbleNumber + "";
+            if (bubbleNumber == 0)
+            {
+                // 泡泡破裂
+                gameObject.SetActive(false);
+                if (effect)
+                {
+                    if (isSmall)
+                    {
+                        EffectManager.Instance.PlayEffect("SmallBubblePop", this.transform.position);
+                    }
+                    else
+                    {
+                        EffectManager.Instance.PlayEffect("BubblePop", this.transform.position);
+                    }
+                }
+                // 减少压力
+                StressManager.Instance.DecreaseStress(5);
+            }
+            else
+            {
+                if (effect)
+                {
+                    if (isSmall)
+                    {
+                        EffectManager.Instance.PlayEffect("SmallBubblePop", this.transform.position);
+                    }
+                    else
+                    {
+                        EffectManager.Instance.PlayEffect("BubblePop", this.transform.position);
+                    }
+                }
+                // 减少压力
+                StressManager.Instance.DecreaseStress(5);
+                if (bubbleNumber <= 1)
+                {
+                    numberText.gameObject.SetActive(false);
+                }
+            }
         }
     }
 
